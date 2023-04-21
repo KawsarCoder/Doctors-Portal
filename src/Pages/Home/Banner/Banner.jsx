@@ -10,12 +10,14 @@ const Banner = () => {
       >
         <img
           src={chair}
-          className="rounded-lg w-1/2 shadow-2xl"
+          className="rounded-lg w-1/2 shadow-2xl  mt-[100px]"
           alt="main-banner"
         />
-        <div>
-          <h1 className="text-5xl font-bold">Box Office News!</h1>
-          <p className="py-6">
+        <div className="mt-20">
+          <h1 className="text-5xl font-bold text-accent leading-[70px] lg:w-[90%]">
+            Your New Smile Starts Here
+          </h1>
+          <p className="py-6 text-accent">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
