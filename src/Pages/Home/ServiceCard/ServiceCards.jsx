@@ -41,13 +41,9 @@ const ServiceCards = () => {
           <ServiceCard key={service.id} service={service} />
         ))}
       </div>
-      <div className="card card-side grid lg:grid-cols-2 mx-auto h-[400px] my-[170px]">
+      <div className="card card-side grid lg:grid-cols-2 mx-auto h-[400px] mt-[170px]">
         <figure>
-          <img
-            src={treatment}
-            className="lg:w-2/3 rounded-lg"
-            alt="treatment-img"
-          />
+          <img src={treatment} className="lg:w-2/3" alt="treatment-img" />
         </figure>
         <div className="card-body lg:w-[72%]">
           <h2 className="card-title text-4xl text-accent">

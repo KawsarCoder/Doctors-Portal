@@ -10,11 +10,11 @@ const Banner = () => {
       >
         <img
           src={chair}
-          className="rounded-lg w-1/2 shadow-2xl  mt-[100px]"
+          className="rounded-lg lg:w-1/2 shadow-2xl  mt-[100px]"
           alt="main-banner"
         />
         <div className="mt-20">
-          <h1 className="text-5xl font-bold text-accent leading-[70px] lg:w-[90%]">
+          <h1 className="text-5xl font-bold text-accent md:leading-[70px] lg:w-[90%]">
             Your New Smile Starts Here
           </h1>
           <p className="py-6 text-accent">

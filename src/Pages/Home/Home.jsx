@@ -1,4 +1,5 @@
 import React from "react";
+import AppointmentCard from "./AppointmentCard/AppointmentCard";
 import Banner from "./Banner/Banner";
 import InfoCards from "./InfoCards/InfoCards";
 import ServiceCards from "./ServiceCard/ServiceCards";
@@ -9,6 +10,7 @@ const Home = () => {
       <Banner />
       <InfoCards />
       <ServiceCards />
+      <AppointmentCard />
     </div>
   );
 };
