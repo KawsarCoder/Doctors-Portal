@@ -1,0 +1,6 @@
+#footerContent {
+  background-image: url(../../../assets/images/footer.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: unset;
+}
