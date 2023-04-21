@@ -17,7 +17,7 @@ const Navbar = () => {
       <li>
         <Link to="/reviews">Reviews</Link>
       </li>
-      <li>
+      <li className="btn btn-primary rounded-lg text-white">
         <Link to="/login">Login</Link>
       </li>
     </>
