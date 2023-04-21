@@ -3,4 +3,6 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-attachment: unset;
+  max-width: 100%;
+  padding: 0;
 }
