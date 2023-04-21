@@ -4,6 +4,7 @@ import whitening from "../../../assets/images/whitening.png";
 import fluoride from "../../../assets/images/fluoride.png";
 import ServiceCard from "./ServiceCard";
 import treatment from "../../../assets/images/treatment.png";
+import PrimaryBtn from "../../../Components/PrimaryBtn/PrimaryBtn";
 
 const ServiceCards = () => {
   const serviceData = [
@@ -58,9 +59,7 @@ const ServiceCards = () => {
             packages and web page
           </p>
           <div className="card-actions">
-            <button className="btn btn-primary bg-gradient-to-r from-secondary to-primary text-white">
-              GET STARTED
-            </button>
+            <PrimaryBtn>GET STARTED</PrimaryBtn>
           </div>
         </div>
       </div>
