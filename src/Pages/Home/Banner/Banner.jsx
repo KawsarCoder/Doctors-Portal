@@ -11,7 +11,7 @@ const Banner = () => {
       >
         <img
           src={chair}
-          className="rounded-lg lg:w-1/2 shadow-2xl  mt-[100px]"
+          className="rounded-lg lg:w-1/2 shadow-2xl mt-[100px]"
           alt="main-banner"
         />
         <div className="mt-20">
