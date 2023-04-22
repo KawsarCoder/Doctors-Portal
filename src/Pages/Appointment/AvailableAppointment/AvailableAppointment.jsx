@@ -1,10 +1,11 @@
-import { data } from "autoprefixer";
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
+import BookingModal from "../BookingModal/BookingModal";
 import AppointmentOptions from "./AppointmentOptions";
 
 const AvailableAppoinment = ({ selectedDate }) => {
   const [appointmentOptions, setAppointmentOptions] = useState([]);
+  const [treatment, setTreatment] = useState(null);
 
   useEffect(() => {
     fetch("appointmentOptions.json")
@@ -19,9 +20,20 @@ const AvailableAppoinment = ({ selectedDate }) => {
       </p>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6">
         {appointmentOptions.map((option) => (
-          <AppointmentOptions key={option._id} appointmentOptions={option} />
+          <AppointmentOptions
+            key={option._id}
+            appointmentOptions={option}
+            setTreatment={setTreatment}
+          />
         ))}
       </div>
+      {treatment && (
+        <BookingModal
+          treatment={treatment}
+          selectedDate={selectedDate}
+          setTreatment={setTreatment}
+        />
+      )}
     </section>
   );
 };
