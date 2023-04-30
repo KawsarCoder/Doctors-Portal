@@ -1,6 +1,8 @@
 import React from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const SignUp = () => {
   const {
@@ -9,10 +11,16 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
+  const { signUpUser } = useContext(AuthContext);
+
   const handleSignUp = (data) => {
-    console.log(data);
-    console.log(errors);
+    signUpUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+      })
+      .catch((error) => console.log(error));
   };
+
   return (
     <div className="h-[800px] flex justify-center items-center">
       <div className="w-96 p-7">
@@ -57,6 +65,11 @@ const SignUp = () => {
                 minLength: {
                   value: 6,
                   message: "Password must be 6 charecter or more",
+                },
+                pattern: {
+                  value: /(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$&*])(?=.*[0-9])/,
+                  message:
+                    "Password must be add at least 1 capital letter, 1 small letter, 1 special character & numbers",
                 },
               })}
               className="input input-bordered w-full max-w-xs"
