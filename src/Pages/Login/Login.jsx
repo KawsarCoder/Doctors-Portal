@@ -1,6 +1,9 @@
 import React from "react";
+import { useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const Login = () => {
   const {
@@ -8,9 +11,22 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const { signIn } = useContext(AuthContext);
+  const [loginError, setLoginError] = useState("");
+
   const handleLogin = (data) => {
     console.log(data);
-    console.log(errors);
+    setLoginError("");
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoginError(error.message);
+      });
   };
 
   return (
@@ -41,10 +57,6 @@ const Login = () => {
             <input
               {...register("password", {
                 required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Password must be 6 characters or longer",
-                },
               })}
               type="password"
               className="input input-bordered w-full max-w-xs"
@@ -56,6 +68,9 @@ const Login = () => {
             <label className="label">
               <span className="label-text">Forget Password?</span>
             </label>
+            <div className="text-red-400 font-bold">
+              {loginError && <p>{loginError}</p>}
+            </div>
           </div>
           <input
             type="submit"
