@@ -22,12 +22,17 @@ const Navbar = () => {
       <li>
         <Link to="/about">About</Link>
       </li>
-      <li>
-        <Link to="/reviews">Reviews</Link>
-      </li>
+
       <li className="btn btn-primary rounded-lg text-white">
         {user?.uid ? (
-          <button onClick={handleLogOut}>Sign out</button>
+          <>
+            <li>
+              <Link to="/dahsboard">Dashboard</Link>
+            </li>
+            <li>
+              <button onClick={handleLogOut}>Sign out</button>
+            </li>
+          </>
         ) : (
           <button>Login</button>
         )}

@@ -1,8 +1,8 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const {
@@ -11,14 +11,26 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const { signUpUser } = useContext(AuthContext);
+  const { signUpUser, updateUser } = useContext(AuthContext);
+  const [signUpError, setSignUpError] = useState("");
 
   const handleSignUp = (data) => {
+    setSignUpError();
     signUpUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
+        toast("User created successfully");
+        const userInformation = {
+          displayName: data.name,
+        };
+        updateUser(userInformation)
+          .then(() => {})
+          .catch((err) => console.log(err));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setSignUpError(error.message);
+        console.log(error);
+      });
   };
 
   return (
@@ -78,6 +90,9 @@ const SignUp = () => {
               <p className="text-red-600">{errors.password.message}</p>
             )}
           </div>
+          {signUpError && (
+            <p className="text-red-600 font-bold">{signUpError}</p>
+          )}
           <input
             type="submit"
             className="text-white btn btn-accent w-full mt-5"
