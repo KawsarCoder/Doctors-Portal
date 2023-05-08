@@ -4,8 +4,8 @@ import toast from "react-hot-toast";
 import { useContext } from "react";
 import { AuthContext } from "../../../Context/AuthProvider";
 
-const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
-  const { name, slots } = treatment;
+const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
+  const { name: treatmentName, slots } = treatment;
   const date = format(selectedDate, "PP");
   const { user } = useContext(AuthContext);
 
@@ -18,7 +18,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
     const phone = form.slot.value;
     const booking = {
       appointmentDate: date,
-      treatment: name,
+      treatment: treatmentName,
       patient: name,
       slot,
       email,
@@ -28,7 +28,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
     fetch("http://localhost:5000/bookings", {
       method: "POST",
       headers: {
-        "content-type": "application.json",
+        "content-type": "application/json",
       },
       body: JSON.stringify(booking),
     })
@@ -38,6 +38,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
         if (data.acknowledged) {
           setTreatment(null);
           toast.success("Booking confirmed");
+          refetch();
         }
       });
   };
@@ -52,7 +53,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">{name}</h3>
+          <h3 className="text-lg font-bold">{treatmentName}</h3>
           <form
             onSubmit={handleBooking}
             className="grid grid-cols-1 gap-3 mt-10"

@@ -3,23 +3,27 @@ import React, { useState } from "react";
 import BookingModal from "../BookingModal/BookingModal";
 import AppointmentOptions from "./AppointmentOptions";
 import { useQuery } from "react-query";
+import Loading from "../../../Components/Shared/Loading/Loading";
 
 const AvailableAppoinment = ({ selectedDate }) => {
   const [treatment, setTreatment] = useState(null);
+  const date = format(selectedDate, "PP");
 
-  const { data: appointmentOptions = [] } = useQuery({
-    queryKey: ["appointmentOptions"],
+  const {
+    data: appointmentOptions = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["appointmentOptions", date],
     queryFn: () =>
-      fetch("http://localhost:5000/appointmentOptions").then((res) =>
-        res.json()
+      fetch(`http://localhost:5000/appointmentOptions?date=${date}`).then(
+        (res) => res.json()
       ),
   });
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/appointmentOptions")
-  //     .then((res) => res.json())
-  //     .then((data) => setAppointmentOptions(data));
-  // }, []);
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <section className="my-16">
@@ -40,6 +44,7 @@ const AvailableAppoinment = ({ selectedDate }) => {
           treatment={treatment}
           selectedDate={selectedDate}
           setTreatment={setTreatment}
+          refetch={refetch}
         />
       )}
     </section>
