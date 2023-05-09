@@ -26,13 +26,39 @@ const SignUp = () => {
         };
         updateUser(userInformation)
           .then(() => {
-            navigate("/");
+            saveUser(data.name, data.email);
           })
           .catch((err) => console.log(err));
       })
       .catch((error) => {
         setSignUpError(error.message);
         console.log(error);
+      });
+  };
+
+  const saveUser = (userName, email) => {
+    const user = { userName, email };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        getUserToken(email);
+      });
+  };
+
+  const getUserToken = (user) => {
+    fetch(`http://localhost:5000/jwt?email=${email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.accessToken) {
+          localStorage.setItem("accessToken", data.accessToken);
+          navigate("/");
+        }
       });
   };
 
