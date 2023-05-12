@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import React from "react";
 import { useContext } from "react";
 import { useQuery } from "react-query";
@@ -13,14 +12,14 @@ const MyAppointment = () => {
     queryFn: async () => {
       const res = await fetch(url, {
         headers: {
-          authorization: `bearer ${localStorage.getItem("accesToken")}`,
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
       });
       const data = await res.json();
       return data;
     },
   });
-
+  // console.log(bookings);
   return (
     <div>
       <h3 className="text-3xl mb-5">My Appoinments</h3>
