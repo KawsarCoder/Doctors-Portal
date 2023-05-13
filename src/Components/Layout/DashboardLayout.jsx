@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const DashboardLayout = () => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
   return (
     <div>
@@ -30,6 +30,12 @@ const DashboardLayout = () => {
               <>
                 <li>
                   <Link to="/dashboard/allusers">All users</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/add-doctor">Add a Doctor</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/manage-doctor">Manage Doctors</Link>
                 </li>
               </>
             )}
