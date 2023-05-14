@@ -2,7 +2,7 @@ import React from "react";
 import PrimaryBtn from "../../../Components/PrimaryBtn/PrimaryBtn";
 
 const AppointmentOptions = ({ appointmentOptions, setTreatment }) => {
-  const { name, slots } = appointmentOptions;
+  const { name, slots, price } = appointmentOptions;
   return (
     <div className="card shadow-xl">
       <div className="card-body text-center">
@@ -12,6 +12,9 @@ const AppointmentOptions = ({ appointmentOptions, setTreatment }) => {
         <p>{slots?.length > 0 ? slots[0] : "Try Another Day"}</p>
         <p>
           {slots?.length} {slots?.length > 1 ? "spaces" : "space"} available
+        </p>
+        <p>
+          <span className="text-orange-500 font-bold">Price: ${price}</span>
         </p>
         <div className="card-actions justify-center">
           <label

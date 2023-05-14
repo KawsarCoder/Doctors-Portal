@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.52.1",
     "daisyui": "^2.51.5",
     "date-fns": "^2.29.3",
     "firebase": "^9.21.0",
