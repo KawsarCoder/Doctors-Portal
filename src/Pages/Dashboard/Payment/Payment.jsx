@@ -10,13 +10,13 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
 
 const Payment = () => {
   const booking = useLoaderData();
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   const { treatment, price, appointmentDate, slot } = booking;
 
-  if (navigation.state === "loading") {
-    return <Loading />;
-  }
+  // if (navigation.state === "loading") {
+  //   return <Loading />;
+  // }
 
   return (
     <div>

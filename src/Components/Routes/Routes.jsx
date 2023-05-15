@@ -81,12 +81,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/payment/:id",
-        element: (
-          <AdminRoute>
-            {" "}
-            <Payment />
-          </AdminRoute>
-        ),
+        element: <Payment />,
         loader: ({ params }) =>
           fetch(
             `https://doctor-portal-server-alpha-mauve.vercel.app/bookings/${params.id}`
