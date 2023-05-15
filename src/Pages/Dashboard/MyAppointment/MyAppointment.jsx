@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { useQuery } from "react-query";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../../Context/AuthProvider";
 
@@ -55,7 +55,7 @@ const MyAppointment = () => {
                       </Link>
                     )}
                     {booking.price && booking.paid && (
-                      <span className="bg-primary text-primary"> Paid</span>
+                      <span className="font-bold text-green-500"> Paid</span>
                     )}
                   </td>
                 </tr>
