@@ -14,7 +14,7 @@ const CheckoutForm = ({ booking }) => {
   const { price, email, patient, _id } = booking;
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://doctor-portal-server-alpha-mauve.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -74,7 +74,7 @@ const CheckoutForm = ({ booking }) => {
         bookingId: _id,
       };
       console.log(payment);
-      fetch("http://localhost:5000/payments", {
+      fetch("https://doctor-portal-server-alpha-mauve.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",

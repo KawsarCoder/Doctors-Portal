@@ -38,7 +38,7 @@ const AddDoctor = () => {
 
           // indivitual doctor database
 
-          fetch(`http://localhost:5000/doctors`, {
+          fetch(`https://doctor-portal-server-alpha-mauve.vercel.app/doctors`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -58,7 +58,9 @@ const AddDoctor = () => {
   const { data: specialties, isLoading } = useQuery({
     queryKey: ["specialty"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/appointmentSpecialty");
+      const res = await fetch(
+        "https://doctor-portal-server-alpha-mauve.vercel.app/appointmentSpecialty"
+      );
       const data = res.json();
       return data;
     },

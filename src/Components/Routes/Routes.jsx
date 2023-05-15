@@ -88,7 +88,9 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/bookings/${params.id}`),
+          fetch(
+            `https://doctor-portal-server-alpha-mauve.vercel.app/bookings/${params.id}`
+          ),
       },
     ],
   },
